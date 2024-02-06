@@ -49,8 +49,8 @@ userSchema.methods.comparePassword = async function(enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password)
 }
 
-// Genrating the JWT token
-userSchema.methods.genrateJsonWebToken = async function() {
+// Genrating the JWT token and this is a function
+userSchema.methods.getJWTToken = async function() {
     const options = {
         expiresIn: process.env.JWT_EXPIRY
     }

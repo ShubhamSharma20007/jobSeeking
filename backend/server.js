@@ -10,6 +10,7 @@ const jobrouter = require("./routes/jobRouter")
 const applicationrouter = require("./routes/applicationRouter")
 const userouter = require("./routes/userRouter")
 const mongoConnection = require("./database/db")
+
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
@@ -25,8 +26,10 @@ app.use(cors({
 
 
 
-app.use(cookieParser())
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser())
 app.use(fileUpload({
     useTempFiles: true,
     tempFileDir: "/tmp/"
